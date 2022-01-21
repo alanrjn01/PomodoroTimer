@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronometro</title>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/style-mobile.css">
+</head>
+<body>
+    <header>
+        <div class="fecha-y-hora">
+            <p id="fecha"></p>
+        </div>
+        <h1 id="titulo">FocusTime</h1>
+        <div class="frase-container">
+            <p id="frase">“El tiempo es la divisa de tu vida. Es la única divisa que tienes, y solo tú puedes determinar cómo será gastada. Se cuidadoso y no permitas que otras personas la gasten por ti”.</p>
+        </div>
+        <p id="autor">William Shakespeare</p>
+    </header>
+    <main>
+        <div class="cronometro-container">
+            <p id="tiempo">25:00</p>
+            <p id="tarea-seleccionada"></p>
+            <img src="media/icons/arrow-right.svg" alt="flecha hacia la derecha" id="flecha-derecha">
+            <div id="circulo"></div>
+        </div>
+        <div class="botones-container">
+            <button id="boton1">Parar</button>
+            <button id="boton2">Reanudar</button>
+            <button id="boton3">Empezar</button>
+            <button id="boton4">Terminar</button>
+        </div>
+        <div class="tareas-container">
+
+            <p>Tareas</p>
+            <form action="">
+                <label for="tarea-1">
+                    <div id="tarea-1-container" class="input-tarea-container">
+
+                        <button type="button" class="icono" id="check-tarea-1"></button>
+
+                        <input type="text" placeholder="Ingrese una tarea..." id="tarea-1" class="input-tarea">
+
+                        <button type="button" class="menos" id="menos-tarea-1"></button>
+
+                        <span id="numero-tarea-1">2</span>
+
+                        <button type="button" class="mas" id="mas-tarea-1"></button>
+
+                    </div>
+                </label>
+            </form>
+
+            <form action="">
+                <label for="tarea-2">
+                    <div id="tarea-2-container" class="input-tarea-container">
+
+                        <button type="button" class="icono" id="check-tarea-2"></button>
+
+                        <input type="text" placeholder="Ingrese una tarea..." id="tarea-2" class="input-tarea">
+
+                        <button type="button" class="menos" id="menos-tarea-2"></button>
+
+                        <span id="numero-tarea-2">0</span>
+
+                        <button type="button" class="mas" id="mas-tarea-2"></button>
+                    </div>
+                </label>
+            </form>
+
+            <form action="">
+                <label for="tarea-3">
+                    <div id="tarea-3-container" class="input-tarea-container">
+
+                        <button type="button" class="icono" id="check-tarea-3"></button>
+
+                        <input type="text" placeholder="Ingrese una tarea..." id="tarea-3" class="input-tarea">
+
+                        <button type="button" class="menos" id="menos-tarea-3"></button>
+
+                        <span id="numero-tarea-3">0</span>
+
+                        <button type="button" class="mas" id="mas-tarea-3"></button>
+                    </div>
+                </label>
+            </form>
+
+            <form action="">
+                <label for="tarea-4">
+                    <div id="tarea-4-container" class="input-tarea-container">
+
+                        <button type="button" class="icono" id="check-tarea-4"></button>
+
+                        <input type="text" placeholder="Ingrese una tarea..." id="tarea-4" class="input-tarea">
+
+                        <button type="button" class="menos" id="menos-tarea-4"></button>
+
+                        <span id="numero-tarea-4">0</span>
+
+                        <button type="button" class="mas" id="mas-tarea-4"></button>
+
+                    </div>
+                </label>
+            </form>
+
+        </div>
+    </main>
+    <script src="js/index.js"></script>
+</body>
+</html>

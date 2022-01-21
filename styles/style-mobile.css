@@ -1,0 +1,252 @@
+/*PreWork*/
+:root{
+    --color-fondo:#5C89E0;
+    --color-letras-blanco: #EFEFEF;
+    --color-letras-negro: #393838;
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html{
+    font-size: 62.5%;
+    font-family: 'Roboto';
+    background-color: var(--color-fondo);
+    color: var(--color-letras-blanco);
+}
+
+/*--HEADER--*/
+footer{
+    width: 100%;
+}
+.fecha-y-hora{
+    margin-right: 0;
+    text-align: right;
+    margin-top: 12px;
+    margin-right: 10px;
+    font-size: 1.4rem;
+    color: #D6CFCF;
+}
+
+.frase-container{
+    margin-top: 16px;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+#titulo{
+    text-align: center;
+    font-size: 3.6rem;
+    font-weight: normal;
+}
+
+#frase{
+    font-size: 1.2rem;
+    text-align: center;
+}
+#autor{
+    text-align: center;
+    font-size: 1.0rem;
+    color: #D6CFCF;
+    font-style: italic;
+}
+
+/*--MAIN--*/
+
+main{
+    width: 100%;
+}
+
+/*--CRONOMETRO--*/
+.cronometro-container{
+    background-color: var(--color-letras-blanco);
+    color: var(--color-letras-negro);
+    width: 320px;
+    height: 110px;
+    border-radius: 40px;
+    margin: 16px auto;
+    display: flex;
+    position: relative;
+    justify-items: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+.cronometro-container p{
+    font-size: 5rem;
+    text-align: center;
+    display: inline-block;
+    position: absolute;
+    left:25%;
+    right: 25%;
+    bottom: 25%;
+}
+#tarea-seleccionada{
+    bottom: 15px;
+    font-size: 1.2rem;
+    color: #A39F9F;
+}
+#flecha-derecha{
+    position: absolute;
+    align-self: center;
+    right: 20px;
+    width: 24px;
+    height: 24px;
+    z-index: 1;
+}
+
+#circulo{
+    height:33px;
+   width:33px;
+   background:#7CF288;
+   -moz-border-radius:32px;
+   -webkit-border-radius:32px;
+   border-radius:32px;
+   position: absolute;
+    align-self: center;
+    right: 16px;
+    opacity: 33%;
+}
+
+.botones-container{
+    text-align: center;
+}
+#boton1{
+    width: 100px;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    margin-right: 5px;
+    display: none;
+    background-color: #BDD1F8;
+    cursor: pointer;
+}
+
+#boton2{
+    width: 100px;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    cursor: pointer;
+    display: none;
+    background-color: #abe9b1;
+    cursor: pointer;
+}
+
+#boton3{
+    width: 100px;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    margin-left: 5px;
+    background-color: var(--color-letras-blanco);
+    cursor: pointer;
+}
+
+#boton4{
+    width: 100px;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    margin-left: 5px;
+    display: none;
+    background-color: #FAB3B3;
+    cursor: pointer;
+}
+
+/*--TAREAS--*/
+
+.tareas-container{
+    background-color: var(--color-letras-blanco);
+    width: 320px;
+    height: 156px;
+    border-radius: 15px;
+    margin: 16px auto;
+    text-align: start;
+    position: relative;
+}
+
+.tareas-container p{
+    font-size: 1.6rem;
+    color: var(--color-letras-negro);
+    padding-top: 10px;
+    padding-bottom: 6px;
+    padding-left: 10px;
+    position: relative;
+}
+
+.input-tarea-container{
+    border-top: 1px solid rgba(0, 0, 0, 0.16);
+    height: 30px;
+    align-content: center;
+    background-color: var(--color-letras-blanco);
+}
+
+.input-tarea-container .icono{
+    background-image: url('../media/icons/add-task.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    position: absolute;
+    margin-left:4px;
+    margin-top: 2px;
+    width: 24px;
+    height: 24px;
+    border: none;
+    cursor: pointer;
+}
+
+.input-tarea{
+    background-color: var(--color-letras-blanco);
+    border: none;
+    margin-top: 8px;
+    margin-left: 35px;
+    width: 215px;
+}
+
+
+.menos{
+    background-image: url('../media/icons/minus-circle.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    margin-top: 2.5px;
+    margin-bottom: 2.5px;
+    right: 44px;
+    border: none;
+    cursor: pointer;
+}
+
+#numero-tarea-1, #numero-tarea-2,#numero-tarea-3, #numero-tarea-4{
+    position: absolute;
+    font-size: 1.8rem;
+    margin-top: 5px;
+    right: 31px;
+    color: var(--color-letras-negro);
+}
+
+.mas{
+    background-image: url('../media/icons/plus-circle.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    margin-top: 2.5px;
+    margin-bottom: 2.5px;
+    right: 4px;
+    border: none;
+    cursor: pointer;
+}
