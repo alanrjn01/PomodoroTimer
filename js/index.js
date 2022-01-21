@@ -36,10 +36,9 @@ $(document).ready(function(){
             this.tarea=tarea;
             this.cantidad=cantidad;
         }
-        EmpezarTemporizador(segundos=59,minutos=24){
+        EmpezarTemporizador(segundos=60,minutos=24){
             
             var intervalo;
-
             $('#boton3').css('display','none');
             $('#boton1').css('display','inline-block');
             $('#boton4').css('display','inline-block');
@@ -60,7 +59,7 @@ $(document).ready(function(){
 
                 //boton reanudar
                 $('#boton2').click(function(){
-                    Object.EmpezarTemporizador(segundos,minutos);
+                    arrayTareas[seleccion].EmpezarTemporizador(segundos,minutos)
                     $('#boton2').css('display','none');
                     $('#boton1').css('display','inline-block');
                 })
@@ -94,29 +93,107 @@ $(document).ready(function(){
         }
     }
 
-    var seleccion;
+    var seleccion=1;
+    var arrayTareas = [null,null,null,null];
+    var cantidadTareas=0;
 
-    $('#check-tarea-1').click(function(){
-        var tarea1= new Timer($('#tarea-1').val(),parseInt($('#numero-tarea-1').text()));
-        $('#tarea-1-container').css('background-color', '#CCD9F2')
+    function AgregarTarea(){
+        cantidadTareas+=1;
+
+    }
+    $('#add-task').click(function(){
+        AgregarTarea();
+        console.log(cantidadTareas);
+        switch(cantidadTareas){
+            case 1:
+                $('#tarea-1-container').css('display','block');
+                break;
+                case 2:
+                $('#tarea-2-container').css('display','block');
+                break;
+                case 3:
+                $('#tarea-3-container').css('display','block');
+                break;
+                case 4:
+                $('#tarea-4-container').css('display','block');
+                break;
+        }
+        
     })
 
+    if(parseInt($('#numero-tarea-1').text()) > 0){
+        $('#play-1').click(function(){
+            arrayTareas.splice(0,0,new Timer($('#tarea-1').val(),parseInt($('#numero-tarea-1').text())));
+        })
+        $('#play-1').on('click',function(){
+            console.log("hola");
+            seleccion=arrayTareas[0];
+            $('#tarea-seleccionada').text(arrayTareas[0].tarea);
+            $('#tarea-1-container').css('background-color','#CCD9F2');
+            $('#play-1').css('background-color','#CCD9F2');
+            $('#tarea-1').css('background-color','#CCD9F2');
+            $('#menos-tarea-1').css('background-color','#CCD9F2');
+            $('#numero-tarea-1').css('background-color','#CCD9F2');
+            $('#mas-tarea-1').css('background-color','#CCD9F2');
+            seleccion=0;
+        });
+    }
+
+    $('#boton3').click(function(){
+        arrayTareas[seleccion].EmpezarTemporizador();
+    });
+
+    
+
+    
+
     $('#check-tarea-2').click(function(){
-        var tarea2= new Timer($('#tarea-2').val(),parseInt($('#numero-tarea-2').text()));
+        arrayTareas.splice(1,0,new Timer($('#tarea-2').val(),parseInt($('#numero-tarea-2').text())));
+        $('#check-tarea-2').css('display','none');
+        $('#play-2').css('display','block');
     })
 
     $('#check-tarea-3').click(function(){
-        var tarea3= new Timer($('#tarea-3').val(),parseInt($('#numero-tarea-3').text()));
+        arrayTareas.splice(2,0,new Timer($('#tarea-3').val(),parseInt($('#numero-tarea-3').text())));
+        $('#check-tarea-3').css('display','none');
+        $('#play-3').css('display','block');
     })
 
     $('#check-tarea-4').click(function(){
-        var tarea4= new Timer($('#tarea-4').val(),parseInt($('#numero-tarea-4').text()));
+        arrayTareas.splice(3,0,new Timer($('#tarea-4').val(),parseInt($('#numero-tarea-4').text())));
+        $('#check-tarea-4').css('display','none');
+        $('#play-4').css('display','block');
     })
 
+    
 
-    $('#boton3').click(function(){
-        tarea1.EmpezarTemporizador();
+    $('#play-2').click(function(){
+        seleccion=arrayTareas[1];
+        console.log(seleccion);
+        $('#tarea-seleccionada').text(arrayTareas[1].tarea);
     })
+
+    $('#play-3').click(function(){
+        seleccion=arrayTareas[2];
+        console.log(seleccion);
+        $('#tarea-seleccionada').text(arrayTareas[2].tarea);
+    })
+
+    $('#play-4').click(function(){
+        seleccion=arrayTareas[3];
+        console.log(seleccion);
+        $('#tarea-seleccionada').text(arrayTareas[3].tarea);
+    })
+    
+
+
+    /* $('#boton3').click(function(){
+        console.log(arrayTareas[0]);
+        console.log(arrayTareas[1]);
+        console.log(arrayTareas[2]);
+        console.log(arrayTareas[3]);
+        arrayTareas[2].EmpezarTemporizador();
+    }) */
 
     
 
