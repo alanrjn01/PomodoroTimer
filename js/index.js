@@ -2,34 +2,61 @@
 
 $(document).ready(function(){
 
+    var frases=[];
+    var autor=[];
+    var aleatorio;
+
+    aleatorio = Math.round(Math.random() *(4-0) + 0);
+    console.log(aleatorio);
+
+    frases.push('"Cuida los minutos y las horas se cuidarán de sí mismas"');
+
+    frases.push('"Se dice que el tiempo es un gran maestro; lo malo es que va matando a sus discípulos"');
+
+    frases.push('"No tengo tiempo para tener prisa"');
+
+    frases.push('El tiempo es nuestro activo más valioso, a pesar de que tendemos a desperdiciarlo, matarlo y gastarlo en vez de cuidarlo e invertirlo"');
+
+    frases.push('"El tiempo es la divisa de tu vida. Es la única divisa que tienes, y solo tú puedes determinar cómo será gastada. Se cuidadoso y no permitas que otras personas la gasten por ti"');
+
+    autor.push("-Lord Chesterfield");
+    autor.push("-Hector Berlioz");
+    autor.push("-John Wesley");
+    autor.push("-Jim Rohn");
+    autor.push("-Carl Sandburg");
+
+    $('#frase').text(frases[aleatorio]);
+    $('#autor').text(autor[aleatorio]);
+
     var fecha= new Date();
-    $('#fecha').text("Domingo " + fecha.getDate() +"/" + (fecha.getMonth()+1) + "/" + fecha.getFullYear());
-   /*  setInterval(function(){
-        var fecha = new Date();
-        switch(fecha.getDay()){
-            case 0:
-                $('#fecha').text("Domingo " + fecha.getDate() +"/" + (fecha.getMonth()+1) + "/" + fecha.getFullYear());
-                break;
+    var dia;
+    switch(fecha.getDay()){
+        case 0:
+            dia = "Domingo";
+            break;
             case 1:
-                $('#fecha').text("Lunes " + fecha.getDate() +"/" + (fecha.getMonth()+1) + "/" + fecha.getFullYear());
+                dia = "Lunes";
                 break;
-            case 2:
-                $('#fecha').text("Martes " + fecha.getDate() +"/" + (fecha.getMonth()+1) + "/" + fecha.getFullYear());
-                break;
-            case 3:
-                $('#fecha').text("Miércoles " + fecha.getDate() +"/" + (fecha.getMonth()+1) + "/" + fecha.getFullYear());
-                break;
-            case 4:
-                $('#fecha').text("Jueves " + fecha.getDate() +"/" + (fecha.getMonth()+1) + "/" + fecha.getFullYear());
-                break;
-            case 5:
-                $('#fecha').text("Viernes " + fecha.getDate() +"/" + (fecha.getMonth()+1) + "/" + fecha.getFullYear());
-                break;
-            case 6:
-                $('#fecha').text("Sábado " + fecha.getDate() +"/" + (fecha.getMonth()+1) + "/" + fecha.getFullYear());
-                break;
-            }
-    },1); */
+                case 2:
+                    dia = "Martes";
+                    break;
+                    case 3:
+                        dia = "Miércoles";
+                        break;
+                        case 4:
+                            dia = "Jueves";
+                            break;
+                            case 5:
+                                dia = "Viernes";
+                                break;
+                                case 6:
+                                    dia = "Sábado";
+                                    break;
+    }
+    $('#fecha').text( dia +" "+ fecha.getDate() +"/" + (fecha.getMonth()+1) + "/" + fecha.getFullYear());
+    
+
+
 
     class Timer{
         constructor(tarea,cantidad){
@@ -72,6 +99,14 @@ $(document).ready(function(){
                     $('#boton3').css('display','inline-block');
                     $('#boton4').css('display','none');
                     $('#tiempo').text("25" + ":" + "00");
+
+                    arrayTareas[seleccion].cantidad-=1;
+
+                    $('#numero-tarea-1').text(arrayTareas[seleccion].cantidad);
+
+                    if(arrayTareas[seleccion].cantidad === 0){
+                        $('#tarea-1-container').css('display','none');
+                    }
                 })
     
                 //cronometro terminado
@@ -83,6 +118,13 @@ $(document).ready(function(){
                     $('#boton2').css('display','none');
                     $('#boton3').css('display','inline-block');
                     $('#boton4').css('display','none');
+                    $('#tiempo').text("25" + ":" + "00");
+                    arrayTareas[seleccion].cantidad-=1;
+
+                    $('#numero-tarea-1').text(arrayTareas[seleccion].cantidad);
+                    if(arrayTareas[0].cantidad === 0){
+                        $('#tarea-1-container').css('display','none');
+                    }
                 }
                 //muestra el tiempo
                 $('#tiempo').text(minutos + ":" + segundos);
@@ -93,23 +135,149 @@ $(document).ready(function(){
         }
     }
 
+    $('#flecha-derecha').click(function(){
+        if($('#tiempo').text() == '25:00'){
+            $('#flecha-derecha').css('display','none');
+            $('#circulo').css('display','none');
+            $('#flecha-izquierda').css('display','block');
+            $('#circulo2').css('display','inline');
+            $('html').css('background-color','#9FCBA3');
+            $('html').css('color','#393838');
+            $('#autor').css('color','#393838');
+            $('.fecha-y-hora').css('color','#393838');
+    
+            $('#frase').hide(200);
+            $('#autor').hide(200);
+            $('.tareas-container').hide(500);
+    
+            $('#titulo').hide(500);
+            $('#titulo').text('RelaxTime');
+            
+            $('#titulo').show(700);
+            
+            $('#boton5').show(500);
+            $('#boton6').show(500);
+        }else{
+            $('.alerta-container').css('display','block');
+        }
+        
+    });
+
+    $('#flecha-izquierda').click(function(){
+        $('#flecha-izquierda').css('display','none');
+        $('#circulo2').css('display','none');
+        $('#flecha-derecha').css('display','block');
+        $('#circulo').css('display','inline');
+        $('html').css('background-color','#5C89E0');
+        $('html').css('color','#EFEFEF');
+        $('#autor').css('color','#EFEFEF');
+        $('.fecha-y-hora').css('color','#EFEFEF');
+        
+        $('#boton5').hide(500);
+        $('#boton6').hide(500);
+        $('#titulo').hide(500);
+        $('#titulo').text('FocusTime');
+        
+            $('#frase').show(200,function(){
+                $('#titulo').show(500);
+                $('#autor').show(600);
+            $('.tareas-container').show(600);
+            });
+            
+
+        
+        
+        
+    });
+
     var seleccion=1;
     var arrayTareas = [null,null,null,null];
     var cantidadTareas=0;
 
     function AgregarTarea(){
         cantidadTareas+=1;
-
     }
+
+    //creacion de tarea
     $('#add-task').click(function(){
         AgregarTarea();
-        console.log(cantidadTareas);
+        $('texto-agregar-tareas').css('display','none');
         switch(cantidadTareas){
             case 1:
+
+                var numeroTareas=1;
+                $('#mas-tarea-1').click(function(){
+                    numeroTareas+=1;
+                    $('#numero-tarea-1').text(numeroTareas);
+                })
+                $('#menos-tarea-1').click(function(){
+                    if(numeroTareas>0){
+                        numeroTareas-=1;
+                        $('#numero-tarea-1').text(numeroTareas);
+                    }
+                })
+
                 $('#tarea-1-container').css('display','block');
+
+                $('#play-1').click(function(){
+                    var inputTarea =$('#tarea-1').val().toString();
+                    var numeroDeTareasARealizar=numeroTareas;
+
+                    if(inputTarea != ""){
+
+                        arrayTareas.splice(0,0,new Timer($('#tarea-1').val(),numeroDeTareasARealizar));
+
+                        console.log(arrayTareas[0]);
+
+                        if(arrayTareas[0].tarea != ""){
+                            seleccion=arrayTareas[0];
+                        $('#tarea-seleccionada').text(arrayTareas[0].tarea);
+                        $('#tarea-1-container').css('background-color','#CCD9F2');
+                        $('#play-1').css('background-color','#CCD9F2');
+                        $('#tarea-1').css('background-color','#CCD9F2');
+                        $('#menos-tarea-1').css('background-color','#CCD9F2');
+                        $('#numero-tarea-1').css('background-color','#CCD9F2');
+                        $('#mas-tarea-1').css('background-color','#CCD9F2');
+                        seleccion=0;
+                        $('#boton3').css('display','inline');
+                        }
+                        inputTarea=arrayTareas[0].tarea;
+                        
+                    };
+                    
+                })
+
                 break;
                 case 2:
-                $('#tarea-2-container').css('display','block');
+                    $('#tarea-2-container').css('display','block');
+
+                $('#play-2').click(function(){
+                    var inputTarea =$('#tarea-2').val().toString();
+                    var numeroDeTareasARealizar=numeroTareas;
+
+                    if(inputTarea != ""){
+
+                        arrayTareas.splice(1,0,new Timer($('#tarea-2').val(),numeroDeTareasARealizar));
+
+
+                        if(arrayTareas[1].tarea != ""){
+                            seleccion=arrayTareas[1];
+                        $('#tarea-seleccionada').text(arrayTareas[1].tarea);
+                        $('#tarea-2-container').css('background-color','#CCD9F2');
+                        $('#play-2').css('background-color','#CCD9F2');
+                        $('#tarea-2').css('background-color','#CCD9F2');
+                        $('#menos-tarea-2').css('background-color','#CCD9F2');
+                        $('#numero-tarea-2').css('background-color','#CCD9F2');
+                        $('#mas-tarea-2').css('background-color','#CCD9F2');
+                        seleccion=1;
+                        $('#boton3').css('display','inline');
+                        }
+                        inputTarea=arrayTareas[1].tarea;
+                        
+                    };
+                    
+                })
+
                 break;
                 case 3:
                 $('#tarea-3-container').css('display','block');
@@ -120,24 +288,9 @@ $(document).ready(function(){
         }
         
     })
+    
 
-    if(parseInt($('#numero-tarea-1').text()) > 0){
-        $('#play-1').click(function(){
-            arrayTareas.splice(0,0,new Timer($('#tarea-1').val(),parseInt($('#numero-tarea-1').text())));
-        })
-        $('#play-1').on('click',function(){
-            console.log("hola");
-            seleccion=arrayTareas[0];
-            $('#tarea-seleccionada').text(arrayTareas[0].tarea);
-            $('#tarea-1-container').css('background-color','#CCD9F2');
-            $('#play-1').css('background-color','#CCD9F2');
-            $('#tarea-1').css('background-color','#CCD9F2');
-            $('#menos-tarea-1').css('background-color','#CCD9F2');
-            $('#numero-tarea-1').css('background-color','#CCD9F2');
-            $('#mas-tarea-1').css('background-color','#CCD9F2');
-            seleccion=0;
-        });
-    }
+   
 
     $('#boton3').click(function(){
         arrayTareas[seleccion].EmpezarTemporizador();
@@ -147,27 +300,11 @@ $(document).ready(function(){
 
     
 
-    $('#check-tarea-2').click(function(){
-        arrayTareas.splice(1,0,new Timer($('#tarea-2').val(),parseInt($('#numero-tarea-2').text())));
-        $('#check-tarea-2').css('display','none');
-        $('#play-2').css('display','block');
-    })
-
-    $('#check-tarea-3').click(function(){
-        arrayTareas.splice(2,0,new Timer($('#tarea-3').val(),parseInt($('#numero-tarea-3').text())));
-        $('#check-tarea-3').css('display','none');
-        $('#play-3').css('display','block');
-    })
-
-    $('#check-tarea-4').click(function(){
-        arrayTareas.splice(3,0,new Timer($('#tarea-4').val(),parseInt($('#numero-tarea-4').text())));
-        $('#check-tarea-4').css('display','none');
-        $('#play-4').css('display','block');
-    })
+    
 
     
 
-    $('#play-2').click(function(){
+    /* $('#play-2').click(function(){
         seleccion=arrayTareas[1];
         console.log(seleccion);
         $('#tarea-seleccionada').text(arrayTareas[1].tarea);
@@ -184,19 +321,5 @@ $(document).ready(function(){
         console.log(seleccion);
         $('#tarea-seleccionada').text(arrayTareas[3].tarea);
     })
-    
-
-
-    /* $('#boton3').click(function(){
-        console.log(arrayTareas[0]);
-        console.log(arrayTareas[1]);
-        console.log(arrayTareas[2]);
-        console.log(arrayTareas[3]);
-        arrayTareas[2].EmpezarTemporizador();
-    }) */
-
-    
-
-
-
+     */
 });

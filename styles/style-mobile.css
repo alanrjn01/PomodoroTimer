@@ -18,7 +18,7 @@ html{
 }
 
 /*--HEADER--*/
-footer{
+header{
     width: 100%;
 }
 .fecha-y-hora{
@@ -31,7 +31,7 @@ footer{
 }
 
 .frase-container{
-    margin-top: 16px;
+    margin-top: 0px;
     margin-right: 5%;
     margin-left: 5%;
 }
@@ -40,17 +40,19 @@ footer{
     text-align: center;
     font-size: 3.6rem;
     font-weight: normal;
+    margin-top: 20px;
 }
 
 #frase{
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     text-align: center;
 }
 #autor{
     text-align: center;
-    font-size: 1.0rem;
+    font-size: 1.2rem;
     color: #D6CFCF;
     font-style: italic;
+    padding-top: 1px;
 }
 
 /*--MAIN--*/
@@ -58,6 +60,72 @@ footer{
 main{
     width: 100%;
 }
+
+.alerta{
+    
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+}
+
+.alerta-container{
+    width: 320px;
+    text-align: center;
+    height: 130px;
+    background-color: var(--color-letras-blanco);
+    color: var(--color-letras-negro);
+    font-size: 1.5rem;
+    z-index: 3;
+    border-radius: 25px;
+    position: absolute;
+    display: none;
+}
+
+.alerta-atencion-container{
+    padding-top: 5px;
+}
+.alerta-atencion{
+    background-color: #F46767;
+    display: inline-block;
+    padding: 4px;
+    border-radius: 32px;
+    font-weight: bold;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.alerta-texto{
+    display: block;
+    margin-top: 7px;
+    margin-right: 2px;
+    margin-left: 2px;
+}
+
+.cancelar{
+    margin-top: 10px;
+    display: inline-block;
+    margin-right: 32px;
+    background-color:#DCDCDD;
+    padding: 9px;
+    border-radius: 32px;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 89px;
+}
+
+.aceptar{
+    margin-top: 10px;
+    display: inline-block;
+    background-color:#DCDCDD;
+    padding: 9px;
+    width: 89px;
+    border-radius: 32px;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+
 
 /*--CRONOMETRO--*/
 .cronometro-container{
@@ -94,7 +162,19 @@ main{
     width: 24px;
     height: 24px;
     z-index: 1;
+    
 }
+#flecha-izquierda{
+    transform: scaleX(-1);
+    position: absolute;
+    align-self: center;
+    right: 21px;
+    width: 24px;
+    height: 24px;
+    z-index: 1;
+    display: none;
+}
+
 
 #circulo{
     height:33px;
@@ -107,6 +187,20 @@ main{
     align-self: center;
     right: 16px;
     opacity: 33%;
+}
+
+#circulo2{
+    height:33px;
+   width:33px;
+   background: #6f97e6;
+   -moz-border-radius:32px;
+   -webkit-border-radius:32px;
+   border-radius:32px;
+   position: absolute;
+    align-self: center;
+    right: 16px;
+    opacity: 33%;
+    display: none;
 }
 
 .botones-container{
@@ -148,6 +242,7 @@ main{
     margin-left: 5px;
     background-color: var(--color-letras-blanco);
     cursor: pointer;
+    display: none;
 }
 
 #boton4{
@@ -163,6 +258,32 @@ main{
     cursor: pointer;
 }
 
+#boton5{
+    width: 100px;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    margin-left: 5px;
+    display: none;
+    background-color: #F1D99A;
+    cursor: pointer;
+}
+
+#boton6{
+    width: 100px;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    margin-left: 5px;
+    display: none;
+    background-color: #F2CD6C;
+    cursor: pointer;
+}
+
 /*--TAREAS--*/
 
 .tareas-container{
@@ -175,9 +296,6 @@ main{
     position: relative;
 }
 
-form{
-    
-}
 
 .tareas-container p{
     font-size: 1.6rem;
@@ -187,6 +305,14 @@ form{
     padding-left: 10px;
     position: relative;
     border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+}
+
+#texto-agregar-tareas{
+    font-size: 1.4rem;
+    position: absolute;
+    right: 35px;
+    color: black;
+    opacity: 50%;
 }
 
 #add-task{

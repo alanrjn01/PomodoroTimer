@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles/style-mobile.css">
 </head>
-<body>
+<body class="cuerpo">
     <header>
         <div class="fecha-y-hora">
             <p id="fecha"></p>
@@ -21,26 +21,42 @@
             <p id="frase">“El tiempo es la divisa de tu vida. Es la única divisa que tienes, y solo tú puedes determinar cómo será gastada. Se cuidadoso y no permitas que otras personas la gasten por ti”.</p>
         </div>
         <p id="autor">William Shakespeare</p>
+        
     </header>
     <main>
+        <div class="alerta">
+            <div class="alerta-container">
+                <div class="alerta-atencion-container">
+                    <p class="alerta-atencion">¡Atención!</p>
+                </div>
+                
+                <p class="alerta-texto">Si sale del modo Focus, perdera su progreso en esta tarea</p>
+                <span class="cancelar">Cancelar</span> <span class="aceptar">Aceptar</span>
+            </div>
+        </div>
+        
         <div class="cronometro-container">
             <p id="tiempo">25:00</p>
             <p id="tarea-seleccionada"></p>
             <img src="media/icons/arrow-right.svg" alt="flecha hacia la derecha" id="flecha-derecha">
             <div id="circulo"></div>
+            <img src="media/icons/arrow-right.svg" alt="flecha hacia la derecha" id="flecha-izquierda">
+            <div id="circulo2"></div>
         </div>
         <div class="botones-container">
             <button id="boton1">Parar</button>
             <button id="boton2">Reanudar</button>
             <button id="boton3">Empezar</button>
             <button id="boton4">Terminar</button>
+            <button id="boton5">5 minutos</button>
+            <button id="boton6">15 minutos</button>
         </div>
         <div class="tareas-container">
 
             <p>Tareas 
-                <span id="add-task">
+                <span id="texto-agregar-tareas">agregar tareas</span>
+                <span id="add-task"></span>
 
-                </span>
             </p>
             <form action="" autocomplete="off">
                 <label for="tarea-1">
