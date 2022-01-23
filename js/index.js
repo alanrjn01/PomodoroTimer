@@ -63,18 +63,26 @@ $(document).ready(function(){
             this.tarea=tarea;
             this.cantidad=cantidad;
         }
-        EmpezarTemporizador(segundos=60,minutos=24){
-            
+        EmpezarTemporizador(segundos=59,minutos=24){
+            $('#flecha-derecha').hide(100);
+            $('#circulo').hide(100);
             var intervalo;
             $('#boton3').css('display','none');
             $('#boton1').css('display','inline-block');
             $('#boton4').css('display','inline-block');
     
             intervalo=setInterval(function(){
+
+                //muestra el tiempo
+                $('#tiempo').text(minutos + ":" + segundos);
+                if(segundos <10){
+                    $('#tiempo').text(minutos + ":0" + segundos);
+                }
+
                 segundos-=1;
                 if(segundos===0){
                     minutos-=1;
-                    segundos=60;
+                    segundos=59;
                 }
 
                 //boton parar
@@ -82,6 +90,8 @@ $(document).ready(function(){
                     clearInterval(intervalo);
                     $('#boton1').css('display','none');
                     $('#boton2').css('display','inline-block');
+                    $('#flecha-derecha').show(100);
+                    $('#circulo').show(100);
                 });
 
                 //boton reanudar
@@ -93,6 +103,8 @@ $(document).ready(function(){
 
                 //boton terminar
                 $('#boton4').click(function(){
+                    $('#flecha-derecha').show(100);
+                    $('#circulo').show(100);
                     clearInterval(intervalo);
                     $('#boton1').css('display','none');
                     $('#boton2').css('display','none');
@@ -126,44 +138,151 @@ $(document).ready(function(){
                         $('#tarea-1-container').css('display','none');
                     }
                 }
-                //muestra el tiempo
-                $('#tiempo').text(minutos + ":" + segundos);
-                if(segundos <10){
-                    $('#tiempo').text(minutos + ":0" + segundos);
-                }
+                
             },1000);
         }
     }
 
+    var usarFlechaDerechaSinTiempo= ()=>{
+        $('#flecha-derecha').css('display','none');
+        $('#circulo').css('display','none');
+        $('#flecha-izquierda').css('display','block');
+        $('#circulo2').css('display','inline');
+        $('html').css('background-color','#9FCBA3');
+        $('html').css('color','#393838');
+        $('#autor').css('color','#393838');
+        $('.fecha-y-hora').css('color','#393838');
+
+        $('#frase').hide(200);
+        $('#autor').hide(200);
+        $('.tareas-container').hide(500);
+
+        $('#titulo').hide(500);
+        $('#titulo').text('RelaxTime');
+        
+        $('#titulo').show(700);
+        
+        $('#boton5').show(500);
+        $('#boton6').show(500);
+    }
+    
+
+    var descansoCronometro = (minutos=4,segundos=59)=>{
+
+        $('#flecha-izquierda').hide(100);
+        $('#circulo2').hide(100);
+        $('#cancel').show(100);
+        $('#circulo3').show(100);
+        $('#cancel').hover(function(){
+            $('#circulo3').css('background','#ff0000');
+        },function(){
+            $('#circulo3').css('background','#e03e3e');
+        });
+        
+        $('#cancel').click(function(){
+            clearInterval(intervaloDescanso);
+                $('#tiempo').text('0:00');
+                $('#cancel').hide(100);
+                $('#circulo3').hide(100);
+                $('#boton5').show(200);
+                $('#boton6').show(200);
+                $('#flecha-izquierda').show(100);
+                $('#circulo2').show(100);
+        });
+
+
+        var intervaloDescanso= setInterval(() => {
+            segundos-=1;
+
+            $('#tiempo').text(minutos + ":" + segundos);
+                if(segundos <10){
+                    $('#tiempo').text(minutos + ":0" + segundos);
+                }
+
+            if (minutos===0 && segundos===0){
+                alert('¡Descanso terminado!');
+                clearInterval(intervaloDescanso);
+                $('#tiempo').text('0:00');
+                $('#flecha-izquierda').show(100);
+                $('#circulo2').show(100);
+            }
+
+            if(segundos===0){
+                minutos-=1;
+                segundos=59;
+            }
+
+
+
+        }, 1000);
+    }
+
+
+
+    var descanso = () =>{
+            $('#boton5').click(function(){
+            var minutos = 4;
+            var segundos = 59;
+            $('#tiempo').text('5' + ":" + '00');
+            console.log("Hola");
+            $('#boton7').css('display','block');
+            $('#boton7').click(function(){
+                descansoCronometro(minutos,segundos);
+                $('#boton7').hide(200);
+                $('#boton5').hide(200);
+                $('#boton6').hide(200);
+            })
+            
+        });
+            $('#boton6').click(function(){
+                var minutos = 14;
+                var segundos = 59;
+                $('#tiempo').text('15' + ":" + '00');
+                console.log("HolaV2");
+                $('#boton7').css('display','block');
+                $('#boton7').click(function(){
+                    descansoCronometro(minutos,segundos);
+                    $('#boton7').hide(200);
+                    $('#boton5').hide(200);
+                    $('#boton6').hide(200);
+                })
+            });
+
+    }
+
+
     $('#flecha-derecha').click(function(){
-        if($('#tiempo').text() == '25:00'){
-            $('#flecha-derecha').css('display','none');
-            $('#circulo').css('display','none');
-            $('#flecha-izquierda').css('display','block');
-            $('#circulo2').css('display','inline');
-            $('html').css('background-color','#9FCBA3');
-            $('html').css('color','#393838');
-            $('#autor').css('color','#393838');
-            $('.fecha-y-hora').css('color','#393838');
-    
-            $('#frase').hide(200);
-            $('#autor').hide(200);
-            $('.tareas-container').hide(500);
-    
-            $('#titulo').hide(500);
-            $('#titulo').text('RelaxTime');
+        if($('#tiempo').text() === '25:00'){
+            console.log("Holandeses");
+            usarFlechaDerechaSinTiempo();
+            $('#boton1').css('display','none');
+                $('#boton2').css('display','none');
+                $('#boton3').css('display','none');
+                $('#boton4').css('display','none');
+                $('#tiempo').text("00:00");
+                descanso();
             
-            $('#titulo').show(700);
-            
-            $('#boton5').show(500);
-            $('#boton6').show(500);
         }else{
+            $('#tiempo').text("00:00");
             $('.alerta-container').css('display','block');
+            $('.cancelar').click(function(){
+                $('.alerta-container').css('display','none');
+            })
+            $('.aceptar').click(function(){
+                $('.alerta-container').css('display','none');
+                usarFlechaDerechaSinTiempo();
+                $('#boton1').css('display','none');
+                $('#boton2').css('display','none');
+                $('#boton3').css('display','none');
+                $('#boton4').css('display','none');
+                descanso();
+            })
+            
         }
         
     });
 
-    $('#flecha-izquierda').click(function(){
+    var usarFlechaIzquierdaSinTiempo= ()=>{
         $('#flecha-izquierda').css('display','none');
         $('#circulo2').css('display','none');
         $('#flecha-derecha').css('display','block');
@@ -172,22 +291,22 @@ $(document).ready(function(){
         $('html').css('color','#EFEFEF');
         $('#autor').css('color','#EFEFEF');
         $('.fecha-y-hora').css('color','#EFEFEF');
-        
-        $('#boton5').hide(500);
-        $('#boton6').hide(500);
-        $('#titulo').hide(500);
+        $('#boton7').hide(200);
+        $('#boton5').hide(200);
+        $('#boton6').hide(200);
+        $('#titulo').hide(200);
         $('#titulo').text('FocusTime');
+        $('#tiempo').text('25:00');
         
             $('#frase').show(200,function(){
                 $('#titulo').show(500);
-                $('#autor').show(600);
-            $('.tareas-container').show(600);
+                $('#autor').show(200);
+            $('.tareas-container').show(200);
             });
-            
+    }
 
-        
-        
-        
+    $('#flecha-izquierda').click(function(){
+        usarFlechaIzquierdaSinTiempo();
     });
 
     var seleccion=1;
@@ -197,6 +316,20 @@ $(document).ready(function(){
     function AgregarTarea(){
         cantidadTareas+=1;
     }
+
+    $('#flecha-derecha').hover(function(){
+        $('#circulo').css('background','#00ff1a')
+    },function(){
+        $('#circulo').css('background','#7CF288')
+    });
+
+    $('#flecha-izquierda').hover(function(){
+        $('#circulo2').css('background','#0055ff')
+    },function(){
+        $('#circulo2').css('background','#6f97e6')
+    });
+
+
 
     //creacion de tarea
     $('#add-task').click(function(){
@@ -233,11 +366,8 @@ $(document).ready(function(){
                             seleccion=arrayTareas[0];
                         $('#tarea-seleccionada').text(arrayTareas[0].tarea);
                         $('#tarea-1-container').css('background-color','#CCD9F2');
-                        $('#play-1').css('background-color','#CCD9F2');
                         $('#tarea-1').css('background-color','#CCD9F2');
-                        $('#menos-tarea-1').css('background-color','#CCD9F2');
                         $('#numero-tarea-1').css('background-color','#CCD9F2');
-                        $('#mas-tarea-1').css('background-color','#CCD9F2');
                         seleccion=0;
                         $('#boton3').css('display','inline');
                         }
@@ -289,37 +419,9 @@ $(document).ready(function(){
         
     })
     
-
-   
-
     $('#boton3').click(function(){
         arrayTareas[seleccion].EmpezarTemporizador();
     });
 
-    
 
-    
-
-    
-
-    
-
-    /* $('#play-2').click(function(){
-        seleccion=arrayTareas[1];
-        console.log(seleccion);
-        $('#tarea-seleccionada').text(arrayTareas[1].tarea);
-    })
-
-    $('#play-3').click(function(){
-        seleccion=arrayTareas[2];
-        console.log(seleccion);
-        $('#tarea-seleccionada').text(arrayTareas[2].tarea);
-    })
-
-    $('#play-4').click(function(){
-        seleccion=arrayTareas[3];
-        console.log(seleccion);
-        $('#tarea-seleccionada').text(arrayTareas[3].tarea);
-    })
-     */
 });

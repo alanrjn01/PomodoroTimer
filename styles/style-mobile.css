@@ -28,6 +28,7 @@ header{
     margin-right: 10px;
     font-size: 1.4rem;
     color: #D6CFCF;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .frase-container{
@@ -40,12 +41,14 @@ header{
     text-align: center;
     font-size: 3.6rem;
     font-weight: normal;
-    margin-top: 20px;
+    margin-top: 5px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 #frase{
     font-size: 1.6rem;
     text-align: center;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 #autor{
     text-align: center;
@@ -53,6 +56,7 @@ header{
     color: #D6CFCF;
     font-style: italic;
     padding-top: 1px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 /*--MAIN--*/
@@ -111,6 +115,11 @@ main{
     border: 1px solid rgba(0, 0, 0, 0.25);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     width: 89px;
+    cursor: pointer;
+}
+
+.cancelar:hover{
+    background-color:#cdcdd3;
 }
 
 .aceptar{
@@ -122,6 +131,11 @@ main{
     border-radius: 32px;
     border: 1px solid rgba(0, 0, 0, 0.25);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+}
+
+.aceptar:hover{
+    background-color:#cdcdd3;
 }
 
 
@@ -155,6 +169,8 @@ main{
     font-size: 1.2rem;
     color: #A39F9F;
 }
+
+
 #flecha-derecha{
     position: absolute;
     align-self: center;
@@ -162,6 +178,7 @@ main{
     width: 24px;
     height: 24px;
     z-index: 1;
+    cursor: pointer;
     
 }
 #flecha-izquierda{
@@ -173,21 +190,35 @@ main{
     height: 24px;
     z-index: 1;
     display: none;
+    cursor: pointer;
+}
+
+#cancel{
+    transform: scaleX(-1);
+    position: absolute;
+    align-self: center;
+    right: 21px;
+    width: 24px;
+    height: 24px;
+    z-index: 1;
+    display: none;
+    cursor: pointer;
 }
 
 
 #circulo{
+    background:#7CF288;
     height:33px;
    width:33px;
-   background:#7CF288;
    -moz-border-radius:32px;
    -webkit-border-radius:32px;
    border-radius:32px;
    position: absolute;
     align-self: center;
     right: 16px;
-    opacity: 33%;
+    opacity: 40%;
 }
+
 
 #circulo2{
     height:33px;
@@ -199,9 +230,26 @@ main{
    position: absolute;
     align-self: center;
     right: 16px;
-    opacity: 33%;
+    opacity: 40%;
     display: none;
 }
+
+#circulo3{
+    height:33px;
+   width:33px;
+   background: #e03e3e;
+   -moz-border-radius:32px;
+   -webkit-border-radius:32px;
+   border-radius:32px;
+   position: absolute;
+    align-self: center;
+    right: 16px;
+    opacity: 40%;
+    display: none;
+}
+
+
+
 
 .botones-container{
     text-align: center;
@@ -219,6 +267,10 @@ main{
     cursor: pointer;
 }
 
+#boton1:hover{
+    background-color: #9ab0dd;
+}
+
 #boton2{
     width: 100px;
     padding: 10px;
@@ -230,6 +282,10 @@ main{
     display: none;
     background-color: #abe9b1;
     cursor: pointer;
+}
+
+#boton2:hover{
+    background-color: #95c599;
 }
 
 #boton3{
@@ -245,6 +301,10 @@ main{
     display: none;
 }
 
+#boton3:hover{
+    background-color: #d4d3d3;
+}
+
 #boton4{
     width: 100px;
     padding: 10px;
@@ -258,6 +318,10 @@ main{
     cursor: pointer;
 }
 
+#boton4:hover{
+    background-color: #d69191;
+}
+
 #boton5{
     width: 100px;
     padding: 10px;
@@ -269,6 +333,11 @@ main{
     display: none;
     background-color: #F1D99A;
     cursor: pointer;
+    margin-top: 15px;
+}
+
+#boton5:hover{
+    background-color: #dac388;
 }
 
 #boton6{
@@ -280,8 +349,30 @@ main{
     text-align: center;
     margin-left: 5px;
     display: none;
-    background-color: #F2CD6C;
+    background-color: #dee06a;
     cursor: pointer;
+}
+
+#boton6:hover{
+    background-color: #cecf72;
+}
+
+#boton7{
+    width: 100px;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    margin-left: 5px;
+    background-color: rgb(212, 190, 233);
+    cursor: pointer;
+    display: none;
+    margin: 0 auto;
+}
+
+#boton7:hover{
+    background-color: rgb(191, 161, 219);
 }
 
 /*--TAREAS--*/
@@ -289,22 +380,23 @@ main{
 .tareas-container{
     background-color: var(--color-letras-blanco);
     width: 320px;
-    height: 80px;
+    height: fit-content;
     border-radius: 15px;
     margin: 16px auto;
     text-align: start;
     position: relative;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
 }
 
 
 .tareas-container p{
     font-size: 1.6rem;
     color: var(--color-letras-negro);
-    padding-top: 10px;
-    padding-bottom: 6px;
+    padding-top: 8px;
+    padding-bottom: 8px;
     padding-left: 10px;
     position: relative;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+    
 }
 
 #texto-agregar-tareas{
@@ -313,6 +405,7 @@ main{
     right: 35px;
     color: black;
     opacity: 50%;
+    top: 10px;
 }
 
 #add-task{
@@ -327,6 +420,7 @@ main{
     height: 24px;
     border: none;
     cursor: pointer;
+    background-color: transparent;
 }
 
 .input-tarea-container{
@@ -334,14 +428,18 @@ main{
     height: 30px;
     align-content: center;
     background-color: var(--color-letras-blanco);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
 
 #tarea-1-container,#tarea-2-container,#tarea-3-container,#tarea-4-container{
     display: none;
 }
 
-.input-tarea-container .icono{
-    background-image: url('../media/icons/add-task.svg');
+
+
+.icono{
+    background-image: url('../media/icons/play-button-transparent.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -352,11 +450,7 @@ main{
     height: 24px;
     border: none;
     cursor: pointer;
-}
-
-#play-1, #play-2, #play-3, #play-4{
-    background-image: url('../media/icons/play.svg');
-    display: block;
+    background-color: transparent;
 }
 
 .input-tarea{
@@ -384,6 +478,7 @@ main{
     right: 44px;
     border: none;
     cursor: pointer;
+    background-color: transparent;
 }
 
 #numero-tarea-1, #numero-tarea-2,#numero-tarea-3, #numero-tarea-4{
@@ -407,4 +502,5 @@ main{
     right: 4px;
     border: none;
     cursor: pointer;
+    background-color: transparent;
 }
