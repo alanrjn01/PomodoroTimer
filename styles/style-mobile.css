@@ -433,7 +433,7 @@ main{
     border-bottom-right-radius: 15px;
 }
 
-#tarea-1-container,#tarea-2-container,#tarea-3-container,#tarea-4-container{
+#tarea-1-container,#tarea-2-container,#tarea-3-container{
     display: none;
 }
 
@@ -482,7 +482,7 @@ main{
     background-color: transparent;
 }
 
-#numero-tarea-1, #numero-tarea-2,#numero-tarea-3, #numero-tarea-4{
+#numero-tarea-1, #numero-tarea-2,#numero-tarea-3{
     position: absolute;
     font-size: 1.8rem;
     margin-top: 5px;
@@ -505,19 +505,29 @@ main{
     cursor: pointer;
     background-color: transparent;
 }
+main{
+    margin-bottom: 50px;
+}
 
 /*FOOTER*/
+
+
 footer{
-    width: 100%;
     position: absolute;
     bottom: 0;
-    height: auto;
-    background: rgba(239, 239, 239, 0.73);
 }
+.footer-container{
+    width: 100vw;
+    height: 36px;
+    background: rgba(181, 201, 213, 0.71);
+    box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.09);
+}
+
 footer img{
-    margin-top: 9px;
-    margin-bottom: 9px;
+    margin-top: 6px;
     margin-left: 20px;
+    height: 24px;
+    width: 24px;
 }
 
 
@@ -608,7 +618,7 @@ footer img{
         height: 34px;
     }
 
-    #numero-tarea-1, #numero-tarea-2,#numero-tarea-3, #numero-tarea-4{
+    #numero-tarea-1, #numero-tarea-2,#numero-tarea-3{
         font-size: 2.6rem;
         right: 42px;
     }
@@ -617,6 +627,18 @@ footer img{
         width: 34px;
         height: 34px;
         right: 60px;
+    }
+
+    /*FOOTER*/
+
+    .footer-container{
+        height: 40px;
+    }
+    footer img{
+
+        width: 28px;
+        height: 28px;
+        
     }
 
 }

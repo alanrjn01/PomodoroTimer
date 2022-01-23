@@ -448,9 +448,6 @@ $(document).ready(function(){
                 case 3:
                 $('#tarea-3-container').css('display','block');
                 break;
-                case 4:
-                $('#tarea-4-container').css('display','block');
-                break;
         }
         
     })
