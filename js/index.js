@@ -28,6 +28,12 @@ $(document).ready(function(){
     $('#frase').text(frases[aleatorio]);
     $('#autor').text(autor[aleatorio]);
 
+     var sonidoAlarma = new Audio('./media/audio/alarm.mp3');
+
+     var sonidoDescanso = new Audio('./media/audio/BugleTune.mp3');
+
+     
+
     var fecha= new Date();
     var dia;
     switch(fecha.getDay()){
@@ -56,7 +62,7 @@ $(document).ready(function(){
     $('#fecha').text( dia +" "+ fecha.getDate() +"/" + (fecha.getMonth()+1) + "/" + fecha.getFullYear());
     
 
-
+   
 
     class Timer{
         constructor(tarea,cantidad){
@@ -78,6 +84,8 @@ $(document).ready(function(){
                 if(segundos <10){
                     $('#tiempo').text(minutos + ":0" + segundos);
                 }
+
+                $('title').text("FocusTime " +minutos + ":" + segundos);
 
                 segundos-=1;
                 if(segundos===0){
@@ -111,6 +119,7 @@ $(document).ready(function(){
                     $('#boton3').css('display','inline-block');
                     $('#boton4').css('display','none');
                     $('#tiempo').text("25" + ":" + "00");
+                    $('title').text("FocusTime");
 
                     arrayTareas[seleccion].cantidad-=1;
 
@@ -126,6 +135,7 @@ $(document).ready(function(){
                     minutos=24;
                     segundos=59;
                     clearInterval(intervalo);
+                    $('title').text("FocusTime");
                     $('#boton1').css('display','none');
                     $('#boton2').css('display','none');
                     $('#boton3').css('display','inline-block');
@@ -137,6 +147,7 @@ $(document).ready(function(){
                     if(arrayTareas[0].cantidad === 0){
                         $('#tarea-1-container').css('display','none');
                     }
+                    sonidoAlarma.play();
                 }
                 
             },1000);
@@ -148,19 +159,21 @@ $(document).ready(function(){
         $('#circulo').css('display','none');
         $('#flecha-izquierda').css('display','block');
         $('#circulo2').css('display','inline');
-        $('html').css('background-color','#9FCBA3');
+        $('html').css('background','linear-gradient(24.04deg, #75C4D6 24.57%, #BED68D 46.29%, #77E365 92.18%)');
         $('html').css('color','#393838');
         $('#autor').css('color','#393838');
         $('.fecha-y-hora').css('color','#393838');
+        $('title').text('RelaxTime');
 
         $('#frase').hide(200);
         $('#autor').hide(200);
         $('.tareas-container').hide(500);
 
         $('#titulo').hide(500);
-        $('#titulo').text('RelaxTime');
+        
         
         $('#titulo').show(700);
+        $('#titulo').text('RelaxTime');
         
         $('#boton5').show(500);
         $('#boton6').show(500);
@@ -181,6 +194,7 @@ $(document).ready(function(){
         
         $('#cancel').click(function(){
             clearInterval(intervaloDescanso);
+                $('title').text("RelaxTime");
                 $('#tiempo').text('0:00');
                 $('#cancel').hide(100);
                 $('#circulo3').hide(100);
@@ -194,22 +208,34 @@ $(document).ready(function(){
         var intervaloDescanso= setInterval(() => {
             segundos-=1;
 
+            $('title').text("RelaxTime " +minutos + ":" + segundos);
+
             $('#tiempo').text(minutos + ":" + segundos);
                 if(segundos <10){
                     $('#tiempo').text(minutos + ":0" + segundos);
                 }
 
             if (minutos===0 && segundos===0){
-                alert('¡Descanso terminado!');
+                $('#cancel').hide(100);
                 clearInterval(intervaloDescanso);
                 $('#tiempo').text('0:00');
+                $('#flecha-izquierda').show(100);
+                $('#circulo2').show(100);
+                $('title').text("RelaxTime");
+                sonidoDescanso.play();
+                $('title').text("RelaxTime");
+                $('#tiempo').text('0:00');
+                $('#cancel').hide(100);
+                $('#circulo3').hide(100);
+                $('#boton5').show(200);
+                $('#boton6').show(200);
                 $('#flecha-izquierda').show(100);
                 $('#circulo2').show(100);
             }
 
             if(segundos===0){
                 minutos-=1;
-                segundos=59;
+                segundos=60;
             }
 
 
@@ -217,34 +243,43 @@ $(document).ready(function(){
         }, 1000);
     }
 
-
+    var minutos=0;
+    var segundos=0;
 
     var descanso = () =>{
             $('#boton5').click(function(){
-            var minutos = 4;
-            var segundos = 59;
+            minutos = 4;
+            segundos = 60;
             $('#tiempo').text('5' + ":" + '00');
             console.log("Hola");
             $('#boton7').css('display','block');
             $('#boton7').click(function(){
-                descansoCronometro(minutos,segundos);
-                $('#boton7').hide(200);
-                $('#boton5').hide(200);
-                $('#boton6').hide(200);
+                if(minutos===4 && segundos ===60){
+                    descansoCronometro(minutos,segundos);
+                    console.log("todas putas");
+                    $('#boton7').hide(200);
+                    $('#boton5').hide(200);
+                    $('#boton6').hide(200);
+                }
+                
             })
             
         });
             $('#boton6').click(function(){
-                var minutos = 14;
-                var segundos = 59;
+                minutos = 14;
+                segundos = 60;
                 $('#tiempo').text('15' + ":" + '00');
                 console.log("HolaV2");
                 $('#boton7').css('display','block');
                 $('#boton7').click(function(){
-                    descansoCronometro(minutos,segundos);
-                    $('#boton7').hide(200);
-                    $('#boton5').hide(200);
-                    $('#boton6').hide(200);
+                    if(minutos===14 && segundos===60){
+                        descansoCronometro(minutos,segundos);
+                        console.log("todas putas2");
+                        $('#boton7').hide(200);
+                        $('#boton5').hide(200);
+                        $('#boton6').hide(200);
+                    }
+                    
                 })
             });
 
@@ -287,7 +322,7 @@ $(document).ready(function(){
         $('#circulo2').css('display','none');
         $('#flecha-derecha').css('display','block');
         $('#circulo').css('display','inline');
-        $('html').css('background-color','#5C89E0');
+        $('html').css('background','linear-gradient(117.41deg, #5E6EF7 23.19%, #4776E6 44.95%, #8E54E9 86.18%)');
         $('html').css('color','#EFEFEF');
         $('#autor').css('color','#EFEFEF');
         $('.fecha-y-hora').css('color','#EFEFEF');
@@ -296,6 +331,7 @@ $(document).ready(function(){
         $('#boton6').hide(200);
         $('#titulo').hide(200);
         $('#titulo').text('FocusTime');
+        $('title').text('FocusTime');
         $('#tiempo').text('25:00');
         
             $('#frase').show(200,function(){

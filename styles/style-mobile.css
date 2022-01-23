@@ -13,7 +13,8 @@
 html{
     font-size: 62.5%;
     font-family: 'Roboto';
-    background-color: var(--color-fondo);
+    background: linear-gradient(117.41deg, #5E6EF7 23.19%, #4776E6 44.95%, #8E54E9 86.18%);
+    height: 100%;
     color: var(--color-letras-blanco);
 }
 
@@ -503,4 +504,119 @@ main{
     border: none;
     cursor: pointer;
     background-color: transparent;
+}
+
+/*FOOTER*/
+footer{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    height: auto;
+    background: rgba(239, 239, 239, 0.73);
+}
+footer img{
+    margin-top: 9px;
+    margin-bottom: 9px;
+    margin-left: 20px;
+}
+
+
+
+
+@media screen and (min-width: 680px){
+
+    /*HEADER*/
+    .fecha-y-hora{
+        font-size: 1.8rem;
+    }
+
+    #titulo{
+        font-size: 6rem;
+    }
+
+    #frase{
+        font-size: 2.2rem;
+        margin-left: 25%;
+        margin-right: 25%;
+    }
+
+    #autor{
+        font-size: 1.6rem;
+    }
+
+    /*MAIN*/
+    .cronometro-container{
+        width: 500px;
+        height: 160px;
+    }
+
+    #tiempo{
+        font-size: 7rem;
+    }
+    
+    #tarea-seleccionada{
+        font-size: 2.2rem;
+    }
+    
+    #flecha-derecha,#flecha-izquierda,#cancel{
+        width: 40px;
+        height: 40px;
+    }
+    
+    #circulo,#circulo2,#circulo3{
+        width: 49px;
+        height: 49px;
+    }
+
+    /*BOTONES*/
+
+    #boton1,#boton2,#boton3,#boton4,#boton5,#boton6,#boton7{
+        width: 110px;
+        font-size: 1.8rem;
+    }
+
+    /*TAREAS*/
+    .tareas-container{
+        width: 450px;
+    }
+    .tareas-container p{
+        font-size: 2.2rem;
+    }
+    #texto-agregar-tareas{
+        font-size: 1.8rem;
+        right: 45px;
+    }
+    #add-task{
+        width: 32px;
+        height: 32px;
+        bottom: 7px;
+    }
+
+    .input-tarea-container{
+        height: 45px;
+    }
+    .input-tarea{
+        font-size: 1.8rem;
+        margin-top: 10px;
+    }
+    .icono{
+        width: 34px;
+        height: 34px;
+    }
+    .mas{
+        width: 34px;
+        height: 34px;
+    }
+
+    #numero-tarea-1, #numero-tarea-2,#numero-tarea-3, #numero-tarea-4{
+        font-size: 2.6rem;
+        right: 42px;
+    }
+
+    .menos{
+        width: 34px;
+        height: 34px;
+        right: 60px;
+    }
+
 }

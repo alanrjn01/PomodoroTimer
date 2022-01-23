@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cronometro</title>
+    <title>FocusTime</title>
     <script src="js/jquery-3.6.0.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,14 +13,15 @@
 </head>
 <body class="cuerpo">
     <header>
+        
         <div class="fecha-y-hora">
             <p id="fecha"></p>
         </div>
         <h1 id="titulo">FocusTime</h1>
         <div class="frase-container">
-            <p id="frase">“El tiempo es la divisa de tu vida. Es la única divisa que tienes, y solo tú puedes determinar cómo será gastada. Se cuidadoso y no permitas que otras personas la gasten por ti”.</p>
+            <p id="frase"></p>
         </div>
-        <p id="autor">William Shakespeare</p>
+        <p id="autor"></p>
         
     </header>
     <main>
@@ -35,18 +36,22 @@
             </div>
         </div>
         
+
+
+        
+
         <div class="cronometro-container">
             <p id="tiempo">25:00</p>
             <p id="tarea-seleccionada"></p>
 
-            <img src="media/icons/arrow-right.svg" alt="flecha hacia la derecha" id="flecha-derecha">
-            <div id="circulo"></div>
+            <img src="media/icons/arrow-right.svg" alt="flecha hacia la derecha" id="flecha-derecha" class="flechas-responsive">
+            <div id="circulo" class="flechas-responsive"></div>
             
-            <img src="media/icons/arrow-right.svg" alt="flecha hacia la derecha" id="flecha-izquierda">
-            <div id="circulo2"></div>
+            <img src="media/icons/arrow-right.svg" alt="flecha hacia la derecha" id="flecha-izquierda" class="flechas-responsive">
+            <div id="circulo2" class="flechas-responsive"></div>
 
-            <img src="media/icons/cancel.svg" alt="flecha hacia la derecha" id="cancel">
-            <div id="circulo3"></div>
+            <img src="media/icons/cancel.svg" alt="flecha hacia la derecha" id="cancel" class="flechas-responsive">
+            <div id="circulo3" class="flechas-responsive"></div>
 
         </div>
         <div class="botones-container">
@@ -64,8 +69,8 @@
             <p>Tareas 
                 <span id="texto-agregar-tareas">agregar tareas</span>
                 <span id="add-task"></span>
-
             </p>
+
             <form action="" autocomplete="off">
                 <label for="tarea-1">
                     <div id="tarea-1-container" class="input-tarea-container">
@@ -135,9 +140,15 @@
                     </div>
                 </label>
             </form>
-
         </div>
     </main>
+    <footer>
+        <div>
+            <a href="https://github.com/alanrjn01" target="_blank">
+                <img src="media/icons/github.svg" alt="">
+            </a>
+        </div>
+    </footer>
     <script src="js/index.js"></script>
 </body>
 </html>
