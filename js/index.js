@@ -127,6 +127,14 @@ $(document).ready(function(){
 
                     if(arrayTareas[seleccion].cantidad === 0){
                         $('#tarea-1-container').css('display','none');
+                        $('#tarea-seleccionada').text("");
+                        $('#tarea-1-container').css('background-color','#EFEFEF');
+                        $('#tarea-1').css('background-color','#EFEFEF');
+                        $('#numero-tarea-1').css('background-color','#EFEFEF');
+                        $('#numero-tarea-1').text("1");
+                        seleccion=0;
+                        $('#boton3').css('display','inline');
+                        
                     }
                 })
     
@@ -155,6 +163,7 @@ $(document).ready(function(){
     }
 
     var usarFlechaDerechaSinTiempo= ()=>{
+        $('#tiempo').text('00:00');
         $('#flecha-derecha').css('display','none');
         $('#circulo').css('display','none');
         $('#flecha-izquierda').css('display','block');
@@ -163,7 +172,6 @@ $(document).ready(function(){
         $('html').css('color','#393838');
         $('#autor').css('color','#393838');
         $('.fecha-y-hora').css('color','#393838');
-        $('title').text('RelaxTime');
 
         $('#frase').hide(200);
         $('#autor').hide(200);
@@ -171,7 +179,7 @@ $(document).ready(function(){
 
         $('#titulo').hide(500);
         
-        
+        $('title').text('RelaxTime');
         $('#titulo').show(700);
         $('#titulo').text('RelaxTime');
         
@@ -179,6 +187,7 @@ $(document).ready(function(){
         $('#boton6').show(500);
     }
     
+
 
     var descansoCronometro = (minutos=4,segundos=59)=>{
 
@@ -298,13 +307,15 @@ $(document).ready(function(){
                 descanso();
             
         }else{
-            $('#tiempo').text("00:00");
             $('.alerta-container').css('display','block');
+            $('.fondo-oscuro2').css('display','block');
             $('.cancelar').click(function(){
                 $('.alerta-container').css('display','none');
+                $('.fondo-oscuro2').css('display','none');
             })
             $('.aceptar').click(function(){
                 $('.alerta-container').css('display','none');
+                $('.fondo-oscuro2').css('display','none');
                 usarFlechaDerechaSinTiempo();
                 $('#boton1').css('display','none');
                 $('#boton2').css('display','none');
@@ -347,12 +358,8 @@ $(document).ready(function(){
 
     var seleccion=1;
     var arrayTareas = [null,null,null,null];
-    var cantidadTareas=0;
 
-    function AgregarTarea(){
-        cantidadTareas+=1;
-    }
-
+    var seleccionDeTareas=0;
     $('#flecha-derecha').hover(function(){
         $('#circulo').css('background','#00ff1a')
     },function(){
@@ -369,9 +376,9 @@ $(document).ready(function(){
 
     //creacion de tarea
     $('#add-task').click(function(){
-        AgregarTarea();
         $('texto-agregar-tareas').css('display','none');
-        switch(cantidadTareas){
+        seleccionDeTareas=1;
+        switch(seleccionDeTareas){
             case 1:
 
                 var numeroTareas=1;
@@ -415,38 +422,9 @@ $(document).ready(function(){
 
                 break;
                 case 2:
-                    $('#tarea-2-container').css('display','block');
-
-                $('#play-2').click(function(){
-                    var inputTarea =$('#tarea-2').val().toString();
-                    var numeroDeTareasARealizar=numeroTareas;
-
-                    if(inputTarea != ""){
-
-                        arrayTareas.splice(1,0,new Timer($('#tarea-2').val(),numeroDeTareasARealizar));
-
-
-                        if(arrayTareas[1].tarea != ""){
-                            seleccion=arrayTareas[1];
-                        $('#tarea-seleccionada').text(arrayTareas[1].tarea);
-                        $('#tarea-2-container').css('background-color','#CCD9F2');
-                        $('#play-2').css('background-color','#CCD9F2');
-                        $('#tarea-2').css('background-color','#CCD9F2');
-                        $('#menos-tarea-2').css('background-color','#CCD9F2');
-                        $('#numero-tarea-2').css('background-color','#CCD9F2');
-                        $('#mas-tarea-2').css('background-color','#CCD9F2');
-                        seleccion=1;
-                        $('#boton3').css('display','inline');
-                        }
-                        inputTarea=arrayTareas[1].tarea;
-                        
-                    };
-                    
-                })
 
                 break;
                 case 3:
-                $('#tarea-3-container').css('display','block');
                 break;
         }
         

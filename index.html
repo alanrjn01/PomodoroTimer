@@ -12,6 +12,10 @@
 <link rel="stylesheet" href="styles/style-mobile.css">
 </head>
 <body class="cuerpo">
+    
+    <div class="fondo-oscuro2">
+
+    </div>
     <header>
         
         <div class="fecha-y-hora">
@@ -29,16 +33,13 @@
             <div class="alerta-container">
                 <div class="alerta-atencion-container">
                     <p class="alerta-atencion">¡Atención!</p>
+                    <hr>
                 </div>
                 
                 <p class="alerta-texto">Si sale del modo Focus, perdera su progreso en esta tarea</p>
                 <span class="cancelar">Cancelar</span> <span class="aceptar">Aceptar</span>
             </div>
         </div>
-        
-
-
-        
 
         <div class="cronometro-container">
             <p id="tiempo">25:00</p>
@@ -67,11 +68,11 @@
         <div class="tareas-container">
 
             <p>Tareas 
-                <span id="texto-agregar-tareas">agregar tareas</span>
+                <span id="texto-agregar-tareas">agregar tarea</span>
                 <span id="add-task"></span>
             </p>
 
-            <form action="" autocomplete="off">
+            <form action="" autocomplete="off" onsubmit="return false">
                 <label for="tarea-1">
                     <div id="tarea-1-container" class="input-tarea-container">
 
@@ -89,39 +90,7 @@
                 </label>
             </form>
 
-            <form action="" autocomplete="off">
-                <label for="tarea-2">
-                    <div id="tarea-2-container" class="input-tarea-container">
 
-                        <button type="button" class="icono" id="play-2"></button>
-
-                        <input type="text" placeholder="Ingrese una tarea..." id="tarea-2" class="input-tarea">
-
-                        <button type="button" class="menos" id="menos-tarea-2"></button>
-
-                        <span id="numero-tarea-2">0</span>
-
-                        <button type="button" class="mas" id="mas-tarea-2"></button>
-                    </div>
-                </label>
-            </form>
-
-            <form action="" autocomplete="off">
-                <label for="tarea-3">
-                    <div id="tarea-3-container" class="input-tarea-container">
-
-                        <button type="button" class="icono" id="play-3"></button>
-
-                        <input type="text" placeholder="Ingrese una tarea..." id="tarea-3" class="input-tarea">
-
-                        <button type="button" class="menos" id="menos-tarea-3"></button>
-
-                        <span id="numero-tarea-3">0</span>
-
-                        <button type="button" class="mas" id="mas-tarea-3"></button>
-                    </div>
-                </label>
-            </form>
 
         </div>
     </main>
