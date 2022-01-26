@@ -65,17 +65,115 @@ $(document).ready(function(){
    
 
     class Timer{
-        constructor(tarea,cantidad){
+
+        
+
+        constructor(tarea,sesiones,ID){
             this.tarea=tarea;
-            this.cantidad=cantidad;
+            this.sesiones=sesiones;
+            this.ID=ID;
         }
-        EmpezarTemporizador(segundos=59,minutos=24){
+
+
+        BotonParar(minutos,segundos,intervalo){
+            clearInterval(intervalo);
+            $('#boton1').css('display','none');
+            $('#boton2').css('display','inline-block');
+            $('#flecha-derecha').show(100);
+            $('#circulo').show(100);
+            $('#tarea-1-container').show(100);
+        }
+
+        BotonReanudar(minutos,segundos){
+                    arrayTareas[0].EmpezarTemporizador(minutos,segundos,ID);
+                    $('#boton2').css('display','none');
+                    $('#boton1').css('display','inline-block');
+                    $('#tarea-1-container').hide(100);
+        }
+
+        BotonTerminar(minutos,segundos,intervalo){
+                    $('#tarea-1-container').show(100);
+                    $('#flecha-derecha').show(100);
+                    $('#circulo').show(100);
+                    clearInterval(intervalo);
+                    $('#tiempo').text("25" + ":" + "00");
+                    $('title').text("FocusTime");
+                    
+                    if(arrayTareas[0].sesiones === 0){
+                        console.log("ihual a 0");
+                        $('#boton1').css('display','none');
+                        $('#boton2').css('display','none');
+                        $('#boton3').css('display','inline-block');
+                        $('#boton4').css('display','none');
+                        $('#tarea-1-container').css('display','none');
+                        $('#tarea-seleccionada').text("");
+                        $('#tarea-1-container').css('background-color','#EFEFEF');
+                        $('#boton3').css('display','inline');
+                        $('#tarea-1').val('');
+                    }else{
+                        console.log("pasaron cosas");
+                        $('#boton1').css('display','none');
+                        $('#boton2').css('display','none');
+                        $('#boton4').css('display','none');
+                        $('#tarea-1-container').css('display','block');
+                        $('#tarea-seleccionada').text("");
+                        $('#tarea-1-container').css('background-color','#B3F593');
+                        $('#boton3').css('display','inline');
+                        $('#tarea-1-container').show(100);
+                    }
+                    
+        }
+
+        CronometroTerminado(minutos,segundos,intervalo){
+            minutos=24;
+                    segundos=59;
+                    clearInterval(intervalo);
+                    $('title').text("FocusTime");
+                    $('#boton1').css('display','none');
+                    $('#boton2').css('display','none');
+                    $('#boton3').css('display','inline-block');
+                    $('#boton4').css('display','none');
+                    $('#tiempo').text("25" + ":" + "00");
+
+                    if(arrayTareas[0].cantidad === 0){
+                        
+                        $('#boton1').css('display','none');
+                        $('#boton2').css('display','none');
+                        $('#boton3').css('display','inline-block');
+                        $('#boton4').css('display','none');
+                        $('#tarea-1-container').css('display','none');
+                        $('#tarea-seleccionada').text("");
+                        $('#tarea-1-container').css('background-color','#EFEFEF');
+                        $('#tarea-1').css('background-color','#EFEFEF');
+                        $('#numero-tarea-1').css('background-color','#EFEFEF');
+                        $('#numero-tarea-1').text("0");
+                        $('#boton3').css('display','inline');
+                    }else{
+                        $('#tarea-1-container').show(100);
+                        $('#boton1').css('display','none');
+                        $('#boton2').css('display','none');
+                        $('#boton4').css('display','none');
+                        $('#tarea-1-container').css('display','block');
+                        $('#tarea-seleccionada').text("");
+                        $('#tarea-1-container').css('background-color','#EFEFEF');
+                        $('#tarea-1').css('background-color','#EFEFEF');
+                        $('#tarea-1-container').css('background-color','#B3F593');
+                        $('#boton3').css('display','inline');
+                    }
+                    sonidoAlarma.play();
+        }
+
+        EmpezarTemporizador(minutos=24,segundos=59,ID){
+
+            
+            console.log(this.sesiones);
             $('#flecha-derecha').hide(100);
             $('#circulo').hide(100);
-            var intervalo;
             $('#boton3').css('display','none');
             $('#boton1').css('display','inline-block');
             $('#boton4').css('display','inline-block');
+
+            var intervalo;
     
             intervalo=setInterval(function(){
 
@@ -93,346 +191,138 @@ $(document).ready(function(){
                     segundos=59;
                 }
 
-                //boton parar
-                $('#boton1').click(function(){
-                    clearInterval(intervalo);
-                    $('#boton1').css('display','none');
-                    $('#boton2').css('display','inline-block');
-                    $('#flecha-derecha').show(100);
-                    $('#circulo').show(100);
-                });
+                    //boton parar
+                    $('#boton1').click(function(){
+                    arrayTareas[0].BotonParar(minutos,segundos,intervalo);
+                    })
+                
+                    //boton reanudar
+                    $('#boton2').click(function(){
+                        arrayTareas[0].BotonReanudar(minutos,segundos);
 
-                //boton reanudar
-                $('#boton2').click(function(){
-                    arrayTareas[seleccion].EmpezarTemporizador(segundos,minutos)
-                    $('#boton2').css('display','none');
-                    $('#boton1').css('display','inline-block');
-                })
+                    })
 
-                //boton terminar
-                $('#boton4').click(function(){
-                    $('#flecha-derecha').show(100);
-                    $('#circulo').show(100);
-                    clearInterval(intervalo);
-                    $('#boton1').css('display','none');
-                    $('#boton2').css('display','none');
-                    $('#boton3').css('display','inline-block');
-                    $('#boton4').css('display','none');
-                    $('#tiempo').text("25" + ":" + "00");
-                    $('title').text("FocusTime");
-
-                    arrayTareas[seleccion].cantidad-=1;
-
-                    $('#numero-tarea-1').text(arrayTareas[seleccion].cantidad);
-
-                    if(arrayTareas[seleccion].cantidad === 0){
-                        $('#tarea-1-container').css('display','none');
-                        $('#tarea-seleccionada').text("");
-                        $('#tarea-1-container').css('background-color','#EFEFEF');
-                        $('#tarea-1').css('background-color','#EFEFEF');
-                        $('#numero-tarea-1').css('background-color','#EFEFEF');
-                        $('#numero-tarea-1').text("1");
-                        seleccion=0;
-                        $('#boton3').css('display','inline');
-                        
-                    }
-                })
+                    //boton terminar
+                     $('#boton4').click(function(){
+                        arrayTareas[0]. BotonTerminar(minutos,segundos,intervalo);
+                    })
     
                 //cronometro terminado
                 if(minutos===0 && segundos===0){
-                    minutos=24;
-                    segundos=59;
-                    clearInterval(intervalo);
-                    $('title').text("FocusTime");
-                    $('#boton1').css('display','none');
-                    $('#boton2').css('display','none');
-                    $('#boton3').css('display','inline-block');
-                    $('#boton4').css('display','none');
-                    $('#tiempo').text("25" + ":" + "00");
-                    arrayTareas[seleccion].cantidad-=1;
-
-                    $('#numero-tarea-1').text(arrayTareas[seleccion].cantidad);
-                    if(arrayTareas[0].cantidad === 0){
-                        $('#tarea-1-container').css('display','none');
-                    }
-                    sonidoAlarma.play();
+                    CronometroTerminado(minutos,segundos,intervalo);
                 }
+                
                 
             },1000);
+            
         }
     }
 
-    var usarFlechaDerechaSinTiempo= ()=>{
-        $('#tiempo').text('00:00');
-        $('#flecha-derecha').css('display','none');
-        $('#circulo').css('display','none');
-        $('#flecha-izquierda').css('display','block');
-        $('#circulo2').css('display','inline');
-        $('html').css('background','linear-gradient(24.04deg, #75C4D6 24.57%, #BED68D 46.29%, #77E365 92.18%)');
-        $('html').css('color','#393838');
-        $('#autor').css('color','#393838');
-        $('.fecha-y-hora').css('color','#393838');
+    var arrayTareas= [4];
+    //boton de agregar tarea
+    var bandera=0;
+    var bandera1=0;
+    var bandera2=0;
+    var primeraVez=0;
 
-        $('#frase').hide(200);
-        $('#autor').hide(200);
-        $('.tareas-container').hide(500);
+    var ID=0;
+    var nombreIngresadoTarea = "Tarea sin nombre";
+    var cantidadSesiones=1;
 
-        $('#titulo').hide(500);
+
+    $('#question-icon').click(()=>{
+        if(bandera2===0){
+            //asignandole el fondo al body para que no se rompa cuando se agrande el height
+            $('body').css('background','linear-gradient(117.41deg, #5E6EF7 23.19%, #4776E6 44.95%, #8E54E9 86.18%)');
+            $('.tecnica').show(100);
+            $('.info1').show(300);
+            bandera2=1;
+        }else{
+            $('.tecnica').hide(100);
+            $('.info1').hide(300);
+            $('#down').css('transform','rotate(360deg)')
+            bandera2=0;
+        }
+    });
+
+    $('#down').click(()=>{
+        if(bandera1===0){
+            $('#tarea-1-container').show(100);
+            $('#down').css('transform','rotate(180deg)')
+            bandera1=1;
+        }else{
+            $('#tarea-1-container').hide(100);
+            $('#down').css('transform','rotate(360deg)')
+            bandera1=0;
+        }
         
-        $('title').text('RelaxTime');
-        $('#titulo').show(700);
-        $('#titulo').text('RelaxTime');
-        
-        $('#boton5').show(500);
-        $('#boton6').show(500);
-    }
-    
+    });
 
+    $('#delete-tarea-1').click(()=>{
+        arrayTareas.splice(0, 0);
+        $('#tarea-1').val("");
+        $('#numero-tarea-1').text("1");
 
-    var descansoCronometro = (minutos=4,segundos=59)=>{
+    });
 
-        $('#flecha-izquierda').hide(100);
-        $('#circulo2').hide(100);
-        $('#cancel').show(100);
-        $('#circulo3').show(100);
-        $('#cancel').hover(function(){
-            $('#circulo3').css('background','#ff0000');
-        },function(){
-            $('#circulo3').css('background','#e03e3e');
-        });
-        
-        $('#cancel').click(function(){
-            clearInterval(intervaloDescanso);
-                $('title').text("RelaxTime");
-                $('#tiempo').text('0:00');
-                $('#cancel').hide(100);
-                $('#circulo3').hide(100);
-                $('#boton5').show(200);
-                $('#boton6').show(200);
-                $('#flecha-izquierda').show(100);
-                $('#circulo2').show(100);
-        });
+    $('#add-task').click(()=>{
 
+        cantidadSesiones=1;
+        arrayTareas.pop();
+        if(primeraVez===0){
+            $('#texto-agregar-tareas').hide(300);
+            ID=0;
+            primeraVez+=1;
+        }
+        if(bandera===0){
+            $('#numero-tarea-1').text(cantidadSesiones);
+            $('#tarea-1-container').show(100);
 
-        var intervaloDescanso= setInterval(() => {
-            segundos-=1;
+            //creacion de instancia de Timer en el arrayTareas
+            /* arrayTareas.push(new Timer()); */
 
-            $('title').text("RelaxTime " +minutos + ":" + segundos);
-
-            $('#tiempo').text(minutos + ":" + segundos);
-                if(segundos <10){
-                    $('#tiempo').text(minutos + ":0" + segundos);
+            //eliminar numero de sesiones
+            $('#menos-tarea-1').click(()=>{
+                if(cantidadSesiones>1){
+                    cantidadSesiones-=1;
+                    $('#numero-tarea-1').text(cantidadSesiones);
                 }
+            });
 
-            if (minutos===0 && segundos===0){
-                $('#cancel').hide(100);
-                clearInterval(intervaloDescanso);
-                $('#tiempo').text('0:00');
-                $('#flecha-izquierda').show(100);
-                $('#circulo2').show(100);
-                $('title').text("RelaxTime");
-                sonidoDescanso.play();
-                $('title').text("RelaxTime");
-                $('#tiempo').text('0:00');
-                $('#cancel').hide(100);
-                $('#circulo3').hide(100);
-                $('#boton5').show(200);
-                $('#boton6').show(200);
-                $('#flecha-izquierda').show(100);
-                $('#circulo2').show(100);
-            }
-
-            if(segundos===0){
-                minutos-=1;
-                segundos=60;
-            }
-
-
-
-        }, 1000);
-    }
-
-    var minutos=0;
-    var segundos=0;
-
-    var descanso = () =>{
-            $('#boton5').click(function(){
-            minutos = 4;
-            segundos = 60;
-            $('#tiempo').text('5' + ":" + '00');
-            console.log("Hola");
-            $('#boton7').css('display','block');
-            $('#boton7').click(function(){
-                if(minutos===4 && segundos ===60){
-                    descansoCronometro(minutos,segundos);
-                    console.log("todas putas");
-                    $('#boton7').hide(200);
-                    $('#boton5').hide(200);
-                    $('#boton6').hide(200);
+            //agregar numero de sesiones
+            $('#mas-tarea-1').click(()=>{
+                if(cantidadSesiones<9){
+                    cantidadSesiones+=1;
+                    $('#numero-tarea-1').text(cantidadSesiones);
                 }
                 
             })
-            
-        });
-            $('#boton6').click(function(){
-                minutos = 14;
-                segundos = 60;
-                $('#tiempo').text('15' + ":" + '00');
-                console.log("HolaV2");
-                $('#boton7').css('display','block');
-                $('#boton7').click(function(){
-                    if(minutos===14 && segundos===60){
-                        descansoCronometro(minutos,segundos);
-                        console.log("todas putas2");
-                        $('#boton7').hide(200);
-                        $('#boton5').hide(200);
-                        $('#boton6').hide(200);
-                    }
+
+
+            $('#play-1').click(()=>{
+                if($('#tarea-1').val().toString() != ""){
+                    nombreIngresadoTarea=$('#tarea-1').val().toString();
+                }
+                $('#tarea-seleccionada').text(nombreIngresadoTarea);
+                arrayTareas.push(new Timer(nombreIngresadoTarea,cantidadSesiones,ID));
+                $('#tarea-1-container').css('background-color','#B3F593');
+                $('#boton3').show(150);
+                $('#boton3').click(()=>{
                     
+                    console.log(arrayTareas[0]);
+                    $('#tarea-1-container').hide(100);
+                    arrayTareas[0].EmpezarTemporizador();
+
                 })
+                
             });
-
-    }
-
-
-    $('#flecha-derecha').click(function(){
-        if($('#tiempo').text() === '25:00'){
-            console.log("Holandeses");
-            usarFlechaDerechaSinTiempo();
-            $('#boton1').css('display','none');
-                $('#boton2').css('display','none');
-                $('#boton3').css('display','none');
-                $('#boton4').css('display','none');
-                $('#tiempo').text("00:00");
-                descanso();
-            
+            ID++;
+            bandera=1;
         }else{
-            $('.alerta-container').css('display','block');
-            $('.fondo-oscuro2').css('display','block');
-            $('.cancelar').click(function(){
-                $('.alerta-container').css('display','none');
-                $('.fondo-oscuro2').css('display','none');
-            })
-            $('.aceptar').click(function(){
-                $('.alerta-container').css('display','none');
-                $('.fondo-oscuro2').css('display','none');
-                usarFlechaDerechaSinTiempo();
-                $('#boton1').css('display','none');
-                $('#boton2').css('display','none');
-                $('#boton3').css('display','none');
-                $('#boton4').css('display','none');
-                descanso();
-            })
-            
+            $('#tarea-1-container').hide(100);
+            bandera=0;
         }
-        
     });
-
-    var usarFlechaIzquierdaSinTiempo= ()=>{
-        $('#flecha-izquierda').css('display','none');
-        $('#circulo2').css('display','none');
-        $('#flecha-derecha').css('display','block');
-        $('#circulo').css('display','inline');
-        $('html').css('background','linear-gradient(117.41deg, #5E6EF7 23.19%, #4776E6 44.95%, #8E54E9 86.18%)');
-        $('html').css('color','#EFEFEF');
-        $('#autor').css('color','#EFEFEF');
-        $('.fecha-y-hora').css('color','#EFEFEF');
-        $('#boton7').hide(200);
-        $('#boton5').hide(200);
-        $('#boton6').hide(200);
-        $('#titulo').hide(200);
-        $('#titulo').text('FocusTime');
-        $('title').text('FocusTime');
-        $('#tiempo').text('25:00');
-        
-            $('#frase').show(200,function(){
-                $('#titulo').show(500);
-                $('#autor').show(200);
-            $('.tareas-container').show(200);
-            });
-    }
-
-    $('#flecha-izquierda').click(function(){
-        usarFlechaIzquierdaSinTiempo();
-    });
-
-    var seleccion=1;
-    var arrayTareas = [null,null,null,null];
-
-    var seleccionDeTareas=0;
-    $('#flecha-derecha').hover(function(){
-        $('#circulo').css('background','#00ff1a')
-    },function(){
-        $('#circulo').css('background','#7CF288')
-    });
-
-    $('#flecha-izquierda').hover(function(){
-        $('#circulo2').css('background','#0055ff')
-    },function(){
-        $('#circulo2').css('background','#6f97e6')
-    });
-
-
-
-    //creacion de tarea
-    $('#add-task').click(function(){
-        $('texto-agregar-tareas').css('display','none');
-        seleccionDeTareas=1;
-        switch(seleccionDeTareas){
-            case 1:
-
-                var numeroTareas=1;
-                $('#mas-tarea-1').click(function(){
-                    numeroTareas+=1;
-                    $('#numero-tarea-1').text(numeroTareas);
-                })
-                $('#menos-tarea-1').click(function(){
-                    if(numeroTareas>0){
-                        numeroTareas-=1;
-                        $('#numero-tarea-1').text(numeroTareas);
-                    }
-                })
-
-                $('#tarea-1-container').css('display','block');
-
-                $('#play-1').click(function(){
-                    var inputTarea =$('#tarea-1').val().toString();
-                    var numeroDeTareasARealizar=numeroTareas;
-
-                    if(inputTarea != ""){
-
-                        arrayTareas.splice(0,0,new Timer($('#tarea-1').val(),numeroDeTareasARealizar));
-
-                        console.log(arrayTareas[0]);
-
-                        if(arrayTareas[0].tarea != ""){
-                            seleccion=arrayTareas[0];
-                        $('#tarea-seleccionada').text(arrayTareas[0].tarea);
-                        $('#tarea-1-container').css('background-color','#CCD9F2');
-                        $('#tarea-1').css('background-color','#CCD9F2');
-                        $('#numero-tarea-1').css('background-color','#CCD9F2');
-                        seleccion=0;
-                        $('#boton3').css('display','inline');
-                        }
-                        inputTarea=arrayTareas[0].tarea;
-                        
-                    };
-                    
-                })
-
-                break;
-                case 2:
-
-                break;
-                case 3:
-                break;
-        }
-        
-    })
     
-    $('#boton3').click(function(){
-        arrayTareas[seleccion].EmpezarTemporizador();
-    });
-
 
 });

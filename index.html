@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,7 +17,11 @@
 
     </div>
     <header>
-        
+        <div class="github">
+            <a href="https://github.com/alanrjn01" target="_blank">
+                <img src="media/icons/github.svg" alt="">
+            </a>
+        </div>
         <div class="fecha-y-hora">
             <p id="fecha"></p>
         </div>
@@ -67,7 +71,9 @@
         </div>
         <div class="tareas-container">
 
-            <p>Tareas 
+            <p>
+                <span id="down"></span>
+                Tareas 
                 <span id="texto-agregar-tareas">agregar tarea</span>
                 <span id="add-task"></span>
             </p>
@@ -76,31 +82,41 @@
                 <label for="tarea-1">
                     <div id="tarea-1-container" class="input-tarea-container">
 
-                        <button type="button" class="icono" id="play-1"></button>
+                        <button type="submit" class="icono" id="play-1"></button>
 
                         <input type="text" placeholder="Ingrese una tarea..." id="tarea-1" class="input-tarea">
 
+                        <button type="button" class="delete" id="delete-tarea-1"></button>
+
                         <button type="button" class="menos" id="menos-tarea-1"></button>
 
-                        <span id="numero-tarea-1">1</span>
+                        <span id="numero-tarea-1">0</span>
 
                         <button type="button" class="mas" id="mas-tarea-1"></button>
 
                     </div>
                 </label>
             </form>
+        </div>
+        
+        <div class="question-container">
+            <span class="question" id="question-icon"> </span>
+            <div class="circulo-question"></div>
+        </div>
 
+        <div class="tecnica-container">
+            <p class="tecnica">La técnica <b>Pomodoro</b> consiste en realizar <b>sesiones de 25 <br> minutos</b>  y alternar entre <b>descansos de entre 5 o 15 minutos.</b>  <br>
+            El objetivo de esta es poder optimizar el tiempo para <br> realizar distintas tareas.</p>
+        </div>
 
-
+        <div class="info-container">
+            <p class="info1"> <b>Guía rápida  </b> <br> Presione el botón de <b>agregar tarea</b>  , posteriormente asígnele <br> <b>un nombre a la tarea </b> y la <b>cantidad de sesiones</b> de trabajo <br> que desea realizar <br>
+                Luego utilice el botón de <b>"pin"</b> para marcar la tarea, el cual le <br> permitirá empezar con la misma.</p>
         </div>
     </main>
     <footer>
         <div class="footer-container">
-            <div>
-                <a href="https://github.com/alanrjn01" target="_blank">
-                    <img src="media/icons/github.svg" alt="">
-                </a>
-            </div>
+            
         </div>
     </footer>
     <script src="js/index.js"></script>

@@ -10,6 +10,8 @@
     margin: 0;
     box-sizing: border-box;
 }
+
+
 html{
     font-size: 62.5%;
     font-family: 'Roboto';
@@ -22,6 +24,18 @@ html{
 header{
     width: 100%;
 }
+
+.github img{
+    margin-top: 5px;
+    margin-left: 10px;
+    height: 24px;
+    width: 24px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
 .fecha-y-hora{
     margin-right: 0;
     text-align: right;
@@ -426,6 +440,21 @@ main{
     top: 10px;
 }
 
+#down{
+    background-image: url('../media/icons/down.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    left: 56px;
+    top: 7px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
 #add-task{
     background-image: url('../media/icons/add-task.svg');
     background-repeat: no-repeat;
@@ -457,18 +486,19 @@ main{
 
 
 .icono{
-    background-image: url('../media/icons/play-button-transparent.svg');
+    background-image: url('../media/icons/pin.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
     position: absolute;
-    margin-left:4px;
+    margin-left:8px;
     margin-top: 2px;
     width: 24px;
     height: 24px;
     border: none;
     cursor: pointer;
     background-color: transparent;
+    transform: rotate(270deg);
 }
 
 .input-tarea{
@@ -477,9 +507,25 @@ main{
     outline: none;
     margin-top: 8px;
     margin-left: 35px;
-    width: 215px;
+    width: 190px;
     
     
+}
+
+.delete{
+    background-image: url('../media/icons/delete.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    margin-top: 2.5px;
+    margin-bottom: 2.5px;
+    right: 70px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
 }
 
 
@@ -526,24 +572,104 @@ main{
     margin-bottom: 50px;
 }
 
+
+/*Contenedor de la imagen del signo de pregunta y el circulo*/
+/*
+para centrarlo use display flex y justify content center
+position absolute en los items para que se sobrepongan entre si
+*/
+.question-container{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 28px;
+    justify-content: center;
+}
+
+
+.question{
+    background-image: url('../media/icons/question.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 28px;
+    height: 28px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    position: absolute;
+    z-index: 1;
+    margin-top: 1px;
+}
+
+.circulo-question{
+    background:var(--color-letras-blanco);
+    height:27px;
+    width:27px;
+   -moz-border-radius:32px;
+   -webkit-border-radius:32px;
+   border-radius:32px;
+   position: absolute;
+}
+
+
+.tecnica-container,.info-container{
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+
+.tecnica-container .tecnica{
+    margin-top: 10px;
+    color: var(--color-letras-negro);
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: normal;
+    padding:10px;
+    background-color: var(--color-letras-blanco);
+    border-radius: 20px;
+    width: fit-content;
+    display: none;
+}
+
+
+
+
+
+.info-container .info1{
+    margin-top: 10px;
+    color: var(--color-letras-negro);
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: normal;
+    padding:10px;
+    background-color: var(--color-letras-blanco);
+    border-radius: 20px;
+    display: block;
+    position: static;
+    display: none;
+    margin-bottom: 15px;
+}
 /*FOOTER*/
 
 
-footer{
-    position: absolute;
+/* footer{
+    width: auto;
+    height: auto;
     bottom: 0;
-}
-.footer-container{
-    width: 100vw;
-    height: 36px;
+    Colocar el footer abajo de todo!!
+
+    position: static;
+    display: block;
 }
 
-footer img{
-    margin-top: 6px;
-    margin-left: 20px;
-    height: 24px;
-    width: 24px;
+.footer-container{
+    position: static;
+    display: block;
 }
+ */
+
 
 
 
@@ -551,6 +677,17 @@ footer img{
 @media screen and (min-width: 680px){
 
     /*HEADER*/
+
+    .github img{
+        margin-top: 8px;
+        margin-left: 10px;
+        height: 28px;
+        width: 28px;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
     .fecha-y-hora{
         font-size: 1.8rem;
     }
@@ -632,6 +769,14 @@ footer img{
         font-size: 1.8rem;
         right: 45px;
     }
+
+    #down{
+        width: 30px;
+        height: 30px;
+        bottom: 9px;
+        left: 75px;
+    }
+
     #add-task{
         width: 32px;
         height: 32px;
@@ -644,30 +789,81 @@ footer img{
     .input-tarea{
         font-size: 1.8rem;
         margin-top: 10px;
+        width: 290px;
     }
     .icono{
-        width: 34px;
-        height: 34px;
+        margin-top: 5px;
+        margin-left: 4px;
+        width: 30px;
+        height: 30px;
     }
     .mas{
-        width: 34px;
-        height: 34px;
+        width: 32px;
+        height: 32px;
+        margin-top: 5px;
     }
 
     #numero-tarea-1, #numero-tarea-2,#numero-tarea-3{
         font-size: 2.6rem;
-        right: 42px;
+        margin-top: 5px;
+        right: 40px;
+    }
+
+    .delete{
+        width: 32px;
+        height: 32px;
+        margin-top: 5px;
+        right: 94px;
+    }
+
+    .delete:hover{
+        background-color: rgb(236, 117, 117);
+        border-radius: 15px;
     }
 
     .menos{
-        width: 34px;
-        height: 34px;
-        right: 60px;
+        width: 32px;
+        height: 32px;
+        margin-top: 5px;
+        right: 57px;
     }
+
+    
+    .question{
+        width: 36px;
+        height: 36px;
+        margin-top: 1px;
+        margin-right: 1px;
+    }
+    
+    .circulo-question{
+        height:35px;
+        width:35px;
+    }
+      
+
+
+
+    .tecnica-container .tecnica{
+        font-size: 1.5rem;
+        font-weight: normal;
+        
+    }
+    
+    
+
+    
+    
+    .info-container .info1{
+        font-size: 1.5rem;
+        font-weight: normal;
+    }
+
+
 
     /*FOOTER*/
 
-    .footer-container{
+    /* .footer-container{
         height: 40px;
     }
     footer img{
@@ -675,6 +871,6 @@ footer img{
         width: 28px;
         height: 28px;
         
-    }
+    } */
 
 }
