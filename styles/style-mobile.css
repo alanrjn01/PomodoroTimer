@@ -600,6 +600,7 @@ position absolute en los items para que se sobrepongan entre si
     position: absolute;
     z-index: 1;
     margin-top: 1px;
+    
 }
 
 .circulo-question{
@@ -610,6 +611,7 @@ position absolute en los items para que se sobrepongan entre si
    -webkit-border-radius:32px;
    border-radius:32px;
    position: absolute;
+   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
 }
 
 
@@ -617,6 +619,7 @@ position absolute en los items para que se sobrepongan entre si
     position: relative;
     display: flex;
     justify-content: center;
+    
 }
 
 
@@ -631,6 +634,7 @@ position absolute en los items para que se sobrepongan entre si
     border-radius: 20px;
     width: fit-content;
     display: none;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
 }
 
 
@@ -650,6 +654,7 @@ position absolute en los items para que se sobrepongan entre si
     position: static;
     display: none;
     margin-bottom: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
 }
 /*FOOTER*/
 
