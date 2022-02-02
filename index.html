@@ -48,6 +48,7 @@
         <div class="cronometro-container">
             <p id="tiempo">25:00</p>
             <p id="tarea-seleccionada"></p>
+            
 
             <img src="media/icons/arrow-right.svg" alt="flecha hacia la derecha" id="flecha-derecha" class="flechas-responsive">
             <div id="circulo" class="flechas-responsive"></div>
@@ -61,8 +62,6 @@
         </div>
         <div class="botones-container">
             <button id="boton7">Descansar</button>
-            <button id="boton1">Parar</button>
-            <button id="boton2">Reanudar</button>
             <button id="boton3">Empezar</button>
             <button id="boton4">Terminar</button>
             <button id="boton5">5 minutos</button>
@@ -90,9 +89,28 @@
 
                         <button type="button" class="menos" id="menos-tarea-1"></button>
 
-                        <span id="numero-tarea-1">0</span>
+                        <span id="numero-tarea-1"></span>
 
                         <button type="button" class="mas" id="mas-tarea-1"></button>
+
+                    </div>
+                </label>
+            </form>
+            <form action="" autocomplete="off" onsubmit="return false">
+                <label for="tarea-2">
+                    <div id="tarea-2-container" class="input-tarea-container">
+
+                        <button type="submit" class="icono" id="play-2"></button>
+
+                        <input type="text" placeholder="Ingrese una tarea..." id="tarea-2" class="input-tarea">
+
+                        <button type="button" class="delete" id="delete-tarea-2"></button>
+
+                        <button type="button" class="menos" id="menos-tarea-2"></button>
+
+                        <span id="numero-tarea-2"></span>
+
+                        <button type="button" class="mas" id="mas-tarea-2"></button>
 
                     </div>
                 </label>

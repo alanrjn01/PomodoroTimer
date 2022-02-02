@@ -545,7 +545,7 @@ main{
     background-color: transparent;
 }
 
-#numero-tarea-1, #numero-tarea-2,#numero-tarea-3{
+#numero-tarea-1, #numero-tarea-2{
     position: absolute;
     font-size: 1.8rem;
     margin-top: 5px;
@@ -592,21 +592,22 @@ position absolute en los items para que se sobrepongan entre si
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    width: 28px;
-    height: 28px;
+    width: 27px;
+    height: 27px;
     border: none;
     cursor: pointer;
     background-color: transparent;
     position: absolute;
     z-index: 1;
     margin-top: 1px;
+    margin-right: 1px;
     
 }
 
 .circulo-question{
     background:var(--color-letras-blanco);
-    height:27px;
-    width:27px;
+    height:28px;
+    width:28px;
    -moz-border-radius:32px;
    -webkit-border-radius:32px;
    border-radius:32px;
